@@ -20,7 +20,7 @@
 
 #### Project Manager
 
-- [**Myra Abilay**]()
+- [**Myra Abilay**](https://github.com/Maimaiiiiii)
 <hr>
 
 A Horse With No Name is a simple yet challenging game, taken from the popular QWOP-style of controls with the grace and power of a horse.
