@@ -13,12 +13,12 @@
 - [**Ian Peter Lastimosa**](https://github.com/LastimosaPeter)
 - [**Mark Joseph Espiritu**](https://github.com/Re3ses)
 
-### Game Developers
+#### Game Developers
 
 - [**Angeline Basbas**](https://github.com/StrayMarimo)
 - [**Jerome Flores**](https://github.com/jeromefloresss)
 
-### Project Manager
+#### Project Manager
 
 - [**Myra Abilay**]()
 <hr>
