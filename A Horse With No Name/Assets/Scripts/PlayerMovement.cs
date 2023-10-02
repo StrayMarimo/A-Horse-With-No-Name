@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public float hingeSpeed = 40;
     public float hingeSpeed2 = 20;
     public float hingeSpeed3 = 5;
+    public Transform body;
+    public Transform finishLine;
+
     void Start()
     {
         
@@ -55,6 +58,13 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        print(body.transform.position.x);
+
+        if (body.transform.position.x > 0 || body.transform.position.x < finishLine.transform.position.x)
+        {
+            Camera.main.transform.position = new Vector3 (body.transform.position.x, 0, -10);
+        }
+
         if(Input.GetKey(KeyCode.Q))
         {
             onKeyPress("Q");
@@ -298,7 +308,5 @@ public class PlayerMovement : MonoBehaviour
         KeySprite = GameObject.FindGameObjectWithTag(key);
         KeySprite.GetComponent<SpriteRenderer>().color = Color.white;
     }
-
-
 
 }
