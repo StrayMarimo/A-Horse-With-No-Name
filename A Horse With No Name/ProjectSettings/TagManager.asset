@@ -10,6 +10,12 @@ TagManager:
   - I
   - O
   - P
+  - Ground
+  - FinishLine
+  - BGM
+  - Horse
+  - Audio
+  - Click
   layers:
   - Default
   - TransparentFX

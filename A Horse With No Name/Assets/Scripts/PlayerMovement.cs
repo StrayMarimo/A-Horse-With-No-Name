@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -58,12 +59,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        print(body.transform.position.x);
-
-        if (body.transform.position.x > 0 || body.transform.position.x < finishLine.transform.position.x)
-        {
-            Camera.main.transform.position = new Vector3 (body.transform.position.x, 0, -10);
-        }
+        
 
         if(Input.GetKey(KeyCode.Q))
         {
@@ -301,12 +297,12 @@ public class PlayerMovement : MonoBehaviour
 
     void onKeyPress(string key){
         KeySprite = GameObject.FindGameObjectWithTag(key);
-        KeySprite.GetComponent<SpriteRenderer>().color = Color.red;
+        KeySprite.GetComponent<Image>().color = Color.red;
     }
 
     void onKeyRelease(string key){
         KeySprite = GameObject.FindGameObjectWithTag(key);
-        KeySprite.GetComponent<SpriteRenderer>().color = Color.white;
+        KeySprite.GetComponent<Image>().color = Color.white;
     }
 
 }
