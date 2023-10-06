@@ -15,6 +15,6 @@ public class Score : MonoBehaviour
     void Update()
     {
         score = Mathf.Round(Player.transform.position.x * 100.0f) * 0.01f; 
-        scoreText.text = score.ToString();
+        scoreText.text = string.Format("{0:0.##}", score);
     }
 }
