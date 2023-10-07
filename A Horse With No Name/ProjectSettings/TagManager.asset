@@ -16,6 +16,9 @@ TagManager:
   - Horse
   - Audio
   - Click
+  - NameInput
+  - HideObjects
+  - HideLeaderboard
   layers:
   - Default
   - TransparentFX

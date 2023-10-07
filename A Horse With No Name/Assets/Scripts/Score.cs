@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
 
     [SerializeField]
     private TMP_Text scoreText;
-    private float score = 0;
+    public float score = 0;
     public GameObject Player;
 
     // Update is called once per frame

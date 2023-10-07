@@ -4,6 +4,12 @@ public class LeaderboardDisplay : MonoBehaviour
 {
     public HighScoreDisplay[] highScoreDisplayArray;
     List<HighScoreEntry> scores = new List<HighScoreEntry>();
+
+    void Start()
+    {
+        scores = XMLManager.instance.LoadScores();
+        UpdateDisplay();
+    }
     void UpdateDisplay()
     {
         scores.Sort((HighScoreEntry x, HighScoreEntry y) => y.score.CompareTo(x.score));
@@ -18,12 +24,9 @@ public class LeaderboardDisplay : MonoBehaviour
                 highScoreDisplayArray[i].HideEntryDisplay();
             }
         }
-
-        print(scores[0].name + " " + scores[0].score);
     }
-    void AddNewScore(string entryName, int entryScore)
+    void AddNewScore(string entryName, float entryScore)
     {
         scores.Add(new HighScoreEntry { name = entryName, score = entryScore });
-        UpdateDisplay();
     }
 }
