@@ -9,6 +9,8 @@ public class LeaderboardDisplay : MonoBehaviour
     {
         scores = XMLManager.instance.LoadScores();
         UpdateDisplay();
+        PlayerPrefs.SetFloat("HighScore", scores[0].score);
+        PlayerPrefs.SetFloat("LowScore", scores[9].score);
     }
     void UpdateDisplay()
     {

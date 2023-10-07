@@ -59,8 +59,6 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        
-
         if(Input.GetKey(KeyCode.Q))
         {
             onKeyPress("Q");
@@ -68,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             BRA.useMotor = true;
             FRA.useMotor = true;
             BLA.useMotor = true;
-
+            
             FLB.useMotor = true;
             BRB.useMotor = true;
             FRB.useMotor = true;
@@ -108,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
             BRC.motor = BRCMotorRef;
             FRC.motor = FRCMotorRef;
             BLC.motor = BLCMotorRef;
-            
         }
 
         else if(Input.GetKey(KeyCode.W))

@@ -18,7 +18,7 @@ TagManager:
   - Click
   - NameInput
   - HideObjects
-  - HideLeaderboard
+  - GameOverPopUp
   layers:
   - Default
   - TransparentFX

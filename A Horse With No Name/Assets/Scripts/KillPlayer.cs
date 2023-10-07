@@ -8,6 +8,7 @@ public class KillPlayer : MonoBehaviour
 {
     public GameObject Score;
     public GameObject ScoreManager;
+    public GameObject YouDied;
     List<HighScoreEntry> scores = new List<HighScoreEntry>();
     private bool isDead = false;
 
@@ -25,6 +26,8 @@ public class KillPlayer : MonoBehaviour
             await Task.Delay(300);
             float score = Score.GetComponent<Score>().score;
             print(PlayerPrefs.GetString("PlayerName")+ " died with score: " + score);
+            YouDied.GetComponent<GameOver>().onGameOver();
+            YouDied.SetActive(true);
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerDiedSFX();
             addScore(PlayerPrefs.GetString("PlayerName"), score);
             isDead = true;
