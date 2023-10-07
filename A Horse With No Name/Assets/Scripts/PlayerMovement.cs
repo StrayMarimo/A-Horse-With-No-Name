@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public float hingeSpeed3 = 5;
     public Transform body;
     public Transform finishLine;
+    public bool isDead = false;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if (isDead) return;
         if(Input.GetKey(KeyCode.Q))
         {
             onKeyPress("Q");

@@ -15,6 +15,8 @@ public class LeaderboardDisplay : MonoBehaviour
     void UpdateDisplay()
     {
         scores.Sort((HighScoreEntry x, HighScoreEntry y) => y.score.CompareTo(x.score));
+        scores = scores.GetRange(0, 10);
+        XMLManager.instance.SaveScores(scores);
         for (int i = 0; i < highScoreDisplayArray.Length; i++)
         {
             if (i < scores.Count)

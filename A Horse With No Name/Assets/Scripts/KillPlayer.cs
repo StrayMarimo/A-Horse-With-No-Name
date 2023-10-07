@@ -9,6 +9,7 @@ public class KillPlayer : MonoBehaviour
     public GameObject Score;
     public GameObject ScoreManager;
     public GameObject YouDied;
+
     List<HighScoreEntry> scores = new List<HighScoreEntry>();
     private bool isDead = false;
 
@@ -16,7 +17,6 @@ public class KillPlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R) && isDead)
             {
-                Destroy(GameObject.FindGameObjectWithTag("Horse"));
                 SceneManager.LoadSceneAsync("Main");
             }
     }
@@ -25,6 +25,8 @@ public class KillPlayer : MonoBehaviour
         if (otherObj.gameObject.tag == "Ground") {
             await Task.Delay(300);
             float score = Score.GetComponent<Score>().score;
+            Score.GetComponent<Score>().isDead = true;
+            GameObject.FindGameObjectWithTag("Horse").GetComponent<PlayerMovement>().isDead = true;
             print(PlayerPrefs.GetString("PlayerName")+ " died with score: " + score);
             YouDied.GetComponent<GameOver>().onGameOver();
             YouDied.SetActive(true);

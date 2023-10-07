@@ -26,23 +26,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
+
     public void ChangeTeamName()
     {
         playClickSFX();
         SceneManager.LoadSceneAsync("Team Name");
     }
-
-
-    public void SavePlayer()
-    {
-        playClickSFX();
-        GameObject input = GameObject.FindGameObjectWithTag("NameInput");
-        PlayerPrefs.SetString("PlayerName", input.GetComponent<TMP_InputField>().text);
-        PlayerPrefs.Save();
-        print(PlayerPrefs.GetString("PlayerName"));
-        SceneManager.LoadSceneAsync("Main");
-    }
-
     private void playClickSFX() {
         GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerMenu>().playClickSFX();
     }
