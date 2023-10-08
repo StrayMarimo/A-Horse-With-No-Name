@@ -7,32 +7,33 @@ using UnityEngine.SceneManagement;
 public class KillPlayer : MonoBehaviour
 {
     public GameObject Score;
-    public GameObject ScoreManager;
     public GameObject YouDied;
+    private Score scoreScript;
 
     List<HighScoreEntry> scores = new List<HighScoreEntry>();
-    private bool isDead = false;
-
+    void Start()
+    {
+        scoreScript = Score.GetComponent<Score>();
+    }
     void Update()
     {
-        if (Input.GetKey(KeyCode.R) && isDead)
+        if (Input.GetKey(KeyCode.R) && scoreScript.isDead)
             {
                 SceneManager.LoadSceneAsync("Main");
             }
     }
     async void OnCollisionEnter2D(Collision2D otherObj)
     {
-        if (otherObj.gameObject.tag == "Ground") {
+        if (otherObj.gameObject.tag == "Ground" && !scoreScript.isDead) {
             GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerDiedSFX();
             await Task.Delay(300);
-            float score = Score.GetComponent<Score>().score;
-            Score.GetComponent<Score>().isDead = true;
+            float score = scoreScript.score;
+            scoreScript.isDead = true;
             GameObject.FindGameObjectWithTag("Horse").GetComponent<PlayerMovement>().isDead = true;
             print(PlayerPrefs.GetString("PlayerName")+ " died with score: " + score);
             YouDied.GetComponent<GameOver>().onGameOver();
             YouDied.SetActive(true);
             addScore(PlayerPrefs.GetString("PlayerName"), score);
-            isDead = true;
         }
     
     }
