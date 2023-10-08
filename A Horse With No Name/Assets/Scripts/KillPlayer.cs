@@ -23,6 +23,7 @@ public class KillPlayer : MonoBehaviour
     async void OnCollisionEnter2D(Collision2D otherObj)
     {
         if (otherObj.gameObject.tag == "Ground") {
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerDiedSFX();
             await Task.Delay(300);
             float score = Score.GetComponent<Score>().score;
             Score.GetComponent<Score>().isDead = true;
@@ -30,7 +31,6 @@ public class KillPlayer : MonoBehaviour
             print(PlayerPrefs.GetString("PlayerName")+ " died with score: " + score);
             YouDied.GetComponent<GameOver>().onGameOver();
             YouDied.SetActive(true);
-            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerDiedSFX();
             addScore(PlayerPrefs.GetString("PlayerName"), score);
             isDead = true;
         }

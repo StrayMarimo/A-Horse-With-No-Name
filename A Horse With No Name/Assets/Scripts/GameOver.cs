@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 public class GameOver : MonoBehaviour
 {
     // [SerializeField]
@@ -15,16 +16,24 @@ public class GameOver : MonoBehaviour
     public TMP_Text RankText;
     public GameObject Score;
 
+    private AudioManager audioManager;
+
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     public void onPlayAgain()
     {
+        audioManager.playClickSFX();
         gameObject.SetActive(false);
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playClickSFX();
         SceneManager.LoadSceneAsync("Main");
     }
 
     public void onQuit()
     {
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playClickSFX();
+        audioManager.playClickSFX();
         SceneManager.LoadSceneAsync("Main Menu");
     }
 

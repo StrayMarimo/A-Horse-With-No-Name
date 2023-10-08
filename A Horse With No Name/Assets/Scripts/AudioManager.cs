@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource playerWonSFX;
     private AudioSource bgm;
     private AudioSource playerNeighSFX;
+    private bool isNeighingPaused = false;
 
     private AudioSource clickSFX;
     // Start is called before the first frame update
@@ -24,11 +25,33 @@ public class AudioManager : MonoBehaviour
 
     public void playPlayerDiedSFX() {
         bgm.Stop();
+        if (playerNeighSFX.isPlaying) {
+            playerNeighSFX.Stop();
+        }
         playerDiedSFX.Play();
+    }
+
+    public void pauseBGM() {
+        bgm.Pause();
+        if (playerNeighSFX.isPlaying) {
+            playerNeighSFX.Pause();
+            isNeighingPaused = true;
+        }
+    }
+
+    public void resumeBGM() {
+        bgm.Play();
+        if (isNeighingPaused) {
+            playerNeighSFX.Play();
+            isNeighingPaused = false;
+        }
     }
 
     public void playPlayerWonSFX() {
         bgm.Stop();
+        if (playerNeighSFX.isPlaying) {
+            playerNeighSFX.Stop();
+        }
         playerWonSFX.Play();
     }
 

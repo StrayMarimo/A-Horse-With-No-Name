@@ -11,7 +11,7 @@ public class ChangeName : MonoBehaviour
     }
     public void SavePlayer()
     {
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerMenu>().playClickSFX();
+        GameObject.FindGameObjectWithTag("Click").GetComponent<AudioSource>().Play();
         GameObject input = GameObject.FindGameObjectWithTag("NameInput");
         if (input.GetComponent<TMP_InputField>().text != "")
         {

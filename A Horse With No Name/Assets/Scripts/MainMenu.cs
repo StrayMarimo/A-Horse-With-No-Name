@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     
     public void PlayGame()
-    {
+    { 
         playClickSFX();
         SceneManager.LoadSceneAsync("Main");
     }
@@ -26,13 +26,15 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
-
     public void ChangeTeamName()
     {
         playClickSFX();
         SceneManager.LoadSceneAsync("Team Name");
     }
-    private void playClickSFX() {
-        GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerMenu>().playClickSFX();
+
+    public void playClickSFX() {
+        GameObject click = GameObject.FindGameObjectWithTag("Click");
+        DontDestroyOnLoad(click.transform.gameObject);
+        click.GetComponent<AudioSource>().Play();
     }
 }
