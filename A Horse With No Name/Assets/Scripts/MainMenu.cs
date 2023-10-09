@@ -1,38 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+// This script is used to control the main menu and its buttons
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    
+
+    // Called when the player clicks the play button.
     public void PlayGame()
     { 
-        playClickSFX();
+        PlayClickSFX();
         SceneManager.LoadSceneAsync("Main");
     }
 
+    // Called when the player clicks the quit button.
     public void QuitGame()
     {
-        playClickSFX();
+        PlayClickSFX();
         Application.Quit();
     }
 
+    // Called when the player Go To Menu button.
     public void GoToMenu()
     {
-        playClickSFX();
+        PlayClickSFX();
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
+    // Called when the player clicks the play button from home page
     public void ChangeTeamName()
     {
-        playClickSFX();
+        PlayClickSFX();
         SceneManager.LoadSceneAsync("Team Name");
     }
 
-    public void playClickSFX() {
+    // plays the click sound effect when a button is clicked
+    private void PlayClickSFX() {
         GameObject click = GameObject.FindGameObjectWithTag("Click");
         DontDestroyOnLoad(click.transform.gameObject);
         click.GetComponent<AudioSource>().Play();
