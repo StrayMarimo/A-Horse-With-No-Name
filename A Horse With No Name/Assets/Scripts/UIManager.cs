@@ -14,15 +14,15 @@ public class UIManager : MonoBehaviour
     public void GoToGame()
     {
         SceneManager.UnloadSceneAsync("Leaderboard");
-        audioManager.playClickSFX();
-        audioManager.resumeBGM();
+        audioManager.PlayClickSFX();
+        audioManager.ResumeBGM();
         Time.timeScale = 1;
     }
     
     public void GoToLeaderboards ()
     {
-        audioManager.playClickSFX();
-        audioManager.pauseBGM();
+        audioManager.PlayClickSFX();
+        audioManager.PauseBGM();
         Time.timeScale = 0;
         GameObject.FindGameObjectWithTag("Click").GetComponent<AudioSource>().Play();
         SceneManager.LoadSceneAsync("Leaderboard", LoadSceneMode.Additive);

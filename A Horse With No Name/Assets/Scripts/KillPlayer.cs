@@ -25,7 +25,7 @@ public class KillPlayer : MonoBehaviour
     async void OnCollisionEnter2D(Collision2D otherObj)
     {
         if (otherObj.gameObject.tag == "Ground" && !scoreScript.isDead) {
-            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerDiedSFX();
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().PlayPlayerDiedSFX();
             await Task.Delay(300);
             float score = scoreScript.score;
             scoreScript.isDead = true;

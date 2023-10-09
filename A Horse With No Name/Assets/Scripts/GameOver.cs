@@ -26,14 +26,14 @@ public class GameOver : MonoBehaviour
 
     public void onPlayAgain()
     {
-        audioManager.playClickSFX();
+        audioManager.PlayClickSFX();
         gameObject.SetActive(false);
         SceneManager.LoadSceneAsync("Main");
     }
 
     public void onQuit()
     {
-        audioManager.playClickSFX();
+        audioManager.PlayClickSFX();
         SceneManager.LoadSceneAsync("Main Menu");
     }
 

@@ -9,7 +9,7 @@ public class PlayerWon : MonoBehaviour
     {
         if (otherObj.gameObject.tag == "Player") {
             print("Player won!");
-            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().playPlayerWonSFX();
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>().PlayPlayerWonSFX();
         }
     }
 }
