@@ -1,26 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+// This script handles the movement of the camera.
+// It follows the player character as it moves.
 using UnityEngine;
-
 
 public class CameraMovement : MonoBehaviour
 {
+    // The position of the player.
+    private Transform playerPos;
 
-    private GameObject Player;
-    private GameObject finishLine;
+    // The position of the finish line.
+    [SerializeField]
+    private Transform finishLine;
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        finishLine = GameObject.FindGameObjectWithTag("FinishLine");
+         // Find the player character by tag and get its position.
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        if (Player.transform.position.x > 0 && Player.transform.position.x < finishLine.transform.position.x)
-        {
-            this.transform.position = new Vector3 (Player.transform.position.x, 0, -10);
-        }
+        // If the player is between the start and finish lines,
+        // move the camera to the player's position.
+        if (playerPos.position.x > 0 && 
+            playerPos.position.x < finishLine.position.x)
+            transform.position = new Vector3 (
+                playerPos.position.x, 
+                transform.position.y, 
+                transform.position.z);
     }
 
 }
