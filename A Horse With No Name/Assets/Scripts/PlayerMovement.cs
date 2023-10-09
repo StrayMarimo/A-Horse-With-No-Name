@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     // The speeds for each leg part.
     [SerializeField]
-    private float[] hingeSpeeds = {400, 200, 100};
+    private float[] hingeSpeeds = {200, 100, 50};
 
     // The key codes for each leg
     private readonly KeyCode[] keyCodes = {

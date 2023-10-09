@@ -1,61 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
+// This script is used to display the game over screen
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
+
 public class GameOver : MonoBehaviour
 {
-    // [SerializeField]
-    public TMP_Text scoreText;
-    //  [SerializeField]
-    public TMP_Text highScoreText;
-    // [SerializeField]
-    public TMP_Text nameText;
-    // [SerializeField]
-    public TMP_Text RankText;
-    public GameObject Score;
+    // The text objects for the game over screen.
+    [SerializeField]
+    private TMP_Text scoreText;
+
+    [SerializeField]
+    private TMP_Text highScoreText;
+
+    [SerializeField]
+    private TMP_Text nameText;
+
+    [SerializeField]
+    private TMP_Text rankText;
+
+    [SerializeField]
+
+    // The script containing the player's score.
+    private Score scoreScript;
 
     private AudioManager audioManager;
 
-
+    // called when the game starts
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public void onPlayAgain()
+    /// <summary>
+    /// Called when the player clicks the play again button.
+    /// </summary>
+    public void OnPlayAgain()
     {
         audioManager.PlayClickSFX();
         gameObject.SetActive(false);
         SceneManager.LoadSceneAsync("Main");
     }
 
-    public void onQuit()
+    /// <summary>
+    /// Called when the player clicks the quit button.
+    /// </summary>
+    public void OnQuit()
     {
         audioManager.PlayClickSFX();
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
-    public void onGameOver()
+    /// <summary>
+    /// Called when the player dies.
+    /// </summary> 
+    public void OnGameOver()
     {
-        float score = Score.GetComponent<Score>().score;
-        highScoreText.text = "Best: " + string.Format("{0:0.##}", PlayerPrefs.GetFloat("HighScore"));
-        nameText.text = PlayerPrefs.GetString("PlayerName");
-        scoreText.text = "You ran an incredible " + string.Format("{0:0.##}", score) + " meters without falling";
+        // get current score
+        float score = scoreScript.score;
 
+        // update high score
+        highScoreText.text = $"Best: {PlayerPrefs.GetFloat("HighScore"):0.##} meters ({PlayerPrefs.GetString("TopTeam")})";
+
+        // update name and score of player
+        nameText.text = PlayerPrefs.GetString("PlayerName");
+        scoreText.text = $"You ran an incredible {score:0.##} meters without falling";
+
+        // update rank message
         if (score > PlayerPrefs.GetFloat("HighScore"))
-        {
-            RankText.text = "New High Score!";
-            highScoreText.text = "Best: " + string.Format("{0:0.##}", score); 
-        }
+            rankText.text = "New High Score!";
         else if (score > PlayerPrefs.GetFloat("LowScore"))
-        {
-            RankText.text = "Congratulations! You made it in our top 10. Check out the leaderboard to see where you rank!";
-        } else 
-        {
-            RankText.text = "You didn't make it into our top 10. Try again to see if you can make it!";
-        }
+            rankText.text = "Congratulations! You made it in our top 10. Check out the leaderboard to see where you rank!";
+        else 
+            rankText.text = "You didn't make it into our top 10. Try again to see if you can make it!";
     }
 
 }

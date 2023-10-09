@@ -1755,8 +1755,8 @@ MonoBehaviour:
   scoreText: {fileID: 956255555}
   highScoreText: {fileID: 1485690759}
   nameText: {fileID: 1623382453}
-  RankText: {fileID: 629282576}
-  Score: {fileID: 875115956}
+  rankText: {fileID: 629282576}
+  scoreScript: {fileID: 875115961}
 --- !u!114 &442109075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3276,7 +3276,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442109074}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: onPlayAgain
+        m_MethodName: OnPlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4268,9 +4268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 246007539}
+  playerPos: {fileID: 1297324892}
   score: 0
-  Player: {fileID: 1438344313}
-  isDead: 0
 --- !u!114 &875115962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5072,7 +5071,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442109074}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: onQuit
+        m_MethodName: OnQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6577,7 +6576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe1845da2212484895952f2e30ff24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: {fileID: 875115956}
+  scoreScript: {fileID: 875115961}
   YouDied: {fileID: 442109072}
 --- !u!60 &1297324897
 PolygonCollider2D:
