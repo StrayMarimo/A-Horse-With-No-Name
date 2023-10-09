@@ -1,37 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+// This script handles the movement of the player character.
+// It listens for input from the user and moves the character accordingly.
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private GameObject KeySprite;
-    public HingeJoint2D[] legs = new HingeJoint2D[12];
-    private JointMotor2D[] motors = new JointMotor2D[12];
-    private Image[] keys = new Image[4];
-    
-    public float hingeSpeed = 400;
-    public float hingeSpeed2 = 250;
-    public float hingeSpeed3 = 100;
-    public Transform body;
-    public Transform finishLine;
-    public bool isDead = false;
-    private KeyCode[] keyCodes = {KeyCode.Q, KeyCode.W, KeyCode.O, KeyCode.P};
+    // The leg parts of the player.
+    [SerializeField] 
+    private HingeJoint2D[] legs = new HingeJoint2D[12];
+
+    // The speeds for each leg part.
+    [SerializeField]
+    private float[] hingeSpeeds = {400, 200, 100};
+
+    // The key codes for each leg
+    private readonly KeyCode[] keyCodes = {
+        KeyCode.Q, KeyCode.W, KeyCode.O, KeyCode.P};
+    // The motors for each leg part.
+    private readonly JointMotor2D[] motors = new JointMotor2D[12];
+     // The UI elements for each leg.
+    private readonly Image[] keys = new Image[4];
 
     /// <summary>
     /// Initializes the motors and keys arrays.
     /// </summary>
     void Start()
     {
-        for (int i = 0; i < 12; i++)
-        {
-            motors[i] = legs[i].motor;
-        }
+        PlayerPrefs.SetInt("isDead", 0);
+        for (int i = 0; i < 12; i++) motors[i] = legs[i].motor;
         for (int i = 0; i < 4; i++)
-        {
-            keys[i] = GameObject.FindGameObjectWithTag(keyCodes[i].ToString()).GetComponent<Image>();
-        }
+            keys[i] = GameObject.FindGameObjectWithTag(
+                keyCodes[i].ToString()).GetComponent<Image>();
+        
     }
 
     /// <summary>
@@ -39,69 +39,60 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (isDead)
+         // If the player is dead, stop listening for input.
+        if (PlayerPrefs.GetInt("isDead") == 1)
         {
-            onKeyRelease();
+            OnKeyRelease();
             return;
         }
+        // Listen for input from the user.
         for (int i = 0; i <= 3; i++)
-        {
             if (Input.GetKeyDown(keyCodes[i]))
             {
+                // change color of key to let user know it's pressed
                 keys[i].color = Color.red;
-                setMotorSpeedPair(i * 3);
+                // set motor speed for the corresponding leg part
+                SetMotorSpeedPair(i * 3);
             }
-        }
+        // Listen for key release.
         for (int i = 0; i <=3; i++)
-        {
-            if (Input.GetKeyUp(keyCodes[i]))
-            {
-                onKeyRelease(i);
-            }
-        }
+            if (Input.GetKeyUp(keyCodes[i])) OnKeyRelease(i);
+        
     }
 
     /// <summary>
-    /// Sets the motor speed for a a leg with 3 parts
+    /// Moves a leg consisting of three parts
+    /// upper has speed hingeSpeeds[0],
+    /// middle has speed hingeSpeeds[1],
+    /// lower has speed hingeSpeeds[2].
     /// </summary>
-    /// <param name="index">The index of the first leg in the group.</param>
-    private void setMotorSpeedPair(int index){
-        legs[index].useMotor = true;
-        legs[index + 1].useMotor = true;
-        legs[index + 2].useMotor = true;
-        motors[index].motorSpeed = -hingeSpeed;
-        motors[index + 1].motorSpeed = -hingeSpeed2;
-        motors[index + 2].motorSpeed = -hingeSpeed3;
-        legs[index].motor = motors[index];
-        legs[index + 1].motor = motors[index + 1];
-        legs[index + 2].motor = motors[index + 2];
+    /// <param name="index">index of first leg part.</param>
+    private void SetMotorSpeedPair(int index){
+        for (int i = index; i < index + 3; i++)
+        {
+            legs[i].useMotor = true;
+            motors[i].motorSpeed = -hingeSpeeds[i - index];
+            legs[i].motor = motors[i];
+        }
     }
-
-
 
     /// <summary>
     /// Changes the color of the key at the specified index to white 
     /// and stops the corresponding leg parts' motors.
     /// </summary>
     /// <param name="index">The index of the key to release.</param>
-    private void onKeyRelease(int index){
+    private void OnKeyRelease(int index){
         keys[index].color = Color.white;
         for(int i = index * 3; i < index * 3 + 3; i++)
-        {
             legs[i].useMotor = false;
-        }
     }
 
     /// <summary>
-    /// Handles the release of all keys.
+    /// Changes the color of all keys to white and stops all motors.
+    /// called when the player dies.
     /// </summary>
-    private void onKeyRelease(){
-        for (int i = 0; i <=3 ; i++){
-            keys[i].color = Color.white;
-        }
-        for(int i = 0; i < 12; i++)
-        {
-            legs[i].useMotor = false;
-        }
+    private void OnKeyRelease(){
+        for (int i = 0; i <=3 ; i++) keys[i].color = Color.white;
+        for(int i = 0; i < 12; i++) legs[i].useMotor = false; 
     }
 }

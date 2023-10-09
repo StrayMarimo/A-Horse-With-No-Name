@@ -47,6 +47,7 @@ public class GameOver : MonoBehaviour
         if (score > PlayerPrefs.GetFloat("HighScore"))
         {
             RankText.text = "New High Score!";
+            highScoreText.text = "Best: " + string.Format("{0:0.##}", score); 
         }
         else if (score > PlayerPrefs.GetFloat("LowScore"))
         {

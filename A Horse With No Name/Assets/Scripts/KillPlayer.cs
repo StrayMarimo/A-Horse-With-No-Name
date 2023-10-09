@@ -29,7 +29,7 @@ public class KillPlayer : MonoBehaviour
             await Task.Delay(300);
             float score = scoreScript.score;
             scoreScript.isDead = true;
-            GameObject.FindGameObjectWithTag("Horse").GetComponent<PlayerMovement>().isDead = true;
+            PlayerPrefs.SetInt("isDead", 1); 
             print(PlayerPrefs.GetString("PlayerName")+ " died with score: " + score);
             YouDied.GetComponent<GameOver>().onGameOver();
             YouDied.SetActive(true);
