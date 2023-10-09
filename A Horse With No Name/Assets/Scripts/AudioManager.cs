@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void ResumeBGM() 
     {
-        bgm.Play();
+        if (PlayerPrefs.GetInt("isDead") == 0) bgm.Play();
         if (isNeighingPaused) {
             playerNeighSFX.Play();
             isNeighingPaused = false;
