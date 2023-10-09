@@ -1,29 +1,40 @@
+// This script is used to change the player's name
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class ChangeName : MonoBehaviour
 {
+    // The input field for the player's name.
+    [SerializeField]
+    private TMP_InputField nameInput;
+    // The placeholder object for the input field.
+    private TextMeshProUGUI placeholder;
     void Start()
     {
-        GameObject input = GameObject.FindGameObjectWithTag("NameInput");
-        input.GetComponent<TMP_InputField>().text = PlayerPrefs.GetString("PlayerName");
+        // Set previous name as default
+        nameInput.text = PlayerPrefs.GetString("PlayerName");
+        // Get the placeholder object
+        placeholder = nameInput.placeholder.GetComponent<TextMeshProUGUI>();
     }
     public void SavePlayer()
     {
-        GameObject.FindGameObjectWithTag("Click").GetComponent<AudioSource>().Play();
-        GameObject input = GameObject.FindGameObjectWithTag("NameInput");
-        if (input.GetComponent<TMP_InputField>().text != "")
+        // Play click sound effect
+        GameObject.FindGameObjectWithTag("Click")
+            .GetComponent<AudioSource>().Play();
+    
+        // If the player entered a name, save it and load the main scene.
+        if (nameInput.text != "")
         {
-            PlayerPrefs.SetString("PlayerName", input.GetComponent<TMP_InputField>().text);
+            PlayerPrefs.SetString("PlayerName", nameInput.text.ToString());
             PlayerPrefs.Save();
-            print(PlayerPrefs.GetString("PlayerName"));
             SceneManager.LoadSceneAsync("Main");
-        } else 
+        } 
+        // Otherwise, display an error message.
+        else 
         {
-            input.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshProUGUI>().color = Color.red; 
-            input.GetComponent<TMP_InputField>().placeholder.GetComponent<TextMeshProUGUI>().text = "Please enter a name";
+            placeholder.color = Color.red; 
+            placeholder.text = "Please enter a name";
         }
     }
-
 }
