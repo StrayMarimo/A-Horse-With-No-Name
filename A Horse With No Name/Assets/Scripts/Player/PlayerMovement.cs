@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // The motors for each leg part.
     private readonly JointMotor2D[] motors = new JointMotor2D[12];
      // The UI elements for each leg.
-    private readonly Image[] keys = new Image[4];
+    private readonly GameObject[] keys = new GameObject[4];
 
     /// <summary>
     /// Initializes the motors and keys arrays.
@@ -28,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerPrefs.SetInt("isDead", 0);
         for (int i = 0; i < 12; i++) motors[i] = legs[i].motor;
+        // get key objects when pressed and set invisible by default
         for (int i = 0; i < 4; i++)
+        {
             keys[i] = GameObject.FindGameObjectWithTag(
-                keyCodes[i].ToString()).GetComponent<Image>();
-        
+                keyCodes[i].ToString());
+            keys[i].SetActive(false);
+        }
     }
 
     /// <summary>
@@ -49,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i <= 3; i++)
             if (Input.GetKeyDown(keyCodes[i]))
             {
-                // change color of key to let user know it's pressed
-                keys[i].color = Color.red;
+                // make key pressed sprite visible
+                keys[i].SetActive(true);
                 // set motor speed for the corresponding leg part
                 SetMotorSpeedPair(i * 3);
             }
@@ -77,22 +80,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Changes the color of the key at the specified index to white 
+    /// sets the pressed key sprite to invisible
     /// and stops the corresponding leg parts' motors.
     /// </summary>
     /// <param name="index">The index of the key to release.</param>
     private void OnKeyRelease(int index){
-        keys[index].color = Color.white;
+        keys[index].SetActive(false);
         for(int i = index * 3; i < index * 3 + 3; i++)
             legs[i].useMotor = false;
     }
 
     /// <summary>
-    /// Changes the color of all keys to white and stops all motors.
+    /// sets all pressed key sprites to invisible
     /// called when the player dies.
     /// </summary>
     private void OnKeyRelease(){
-        for (int i = 0; i <=3 ; i++) keys[i].color = Color.white;
+        for (int i = 0; i <=3 ; i++) keys[i].SetActive(false);
         for(int i = 0; i < 12; i++) legs[i].useMotor = false; 
     }
 }
