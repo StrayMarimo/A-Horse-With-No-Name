@@ -10,11 +10,13 @@ public class HelpOverlay : MonoBehaviour
     {
         helpOverlay.SetActive(true);
         Time.timeScale = 0;
+        AudioListener.pause = true;
     }
 
     public void Resume()
     {
         helpOverlay.SetActive(false);
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }
