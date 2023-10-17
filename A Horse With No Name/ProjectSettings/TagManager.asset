@@ -21,11 +21,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Right
+  - LeftFront
+  - LeftBack
   - Body
-  - Left
-  - 
-  - 
+  - RightFront
+  - RightBack
   - 
   - 
   - 
@@ -51,11 +51,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Left
+  - name: LeftFront
     uniqueID: 1283929105
     locked: 0
-  - name: Right
+  - name: LeftBack
+    uniqueID: 486034437
+    locked: 0
+  - name: RightFront
     uniqueID: 724937483
+    locked: 0
+  - name: RightBack
+    uniqueID: 2627744425
     locked: 0
   - name: Body
     uniqueID: 2063352433
