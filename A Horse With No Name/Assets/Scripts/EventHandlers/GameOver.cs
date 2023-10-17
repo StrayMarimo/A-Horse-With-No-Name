@@ -12,16 +12,28 @@ public class GameOver : MonoBehaviour
     private TMP_Text scoreText;
 
     [SerializeField]
-    private TMP_Text highScoreText;
+    private GameObject wonTitle;
+
+    [SerializeField]
+    private GameObject lostTitle;
 
     [SerializeField]
     private TMP_Text nameText;
 
     [SerializeField]
-    private TMP_Text rankText;
+    private GameObject leaderboardBtn;
 
     [SerializeField]
+    private GameObject homeBtn;
+
+    [SerializeField]
+    private GameObject pauseBtn;
+
+    [SerializeField]
+    private GameObject scoreCanvas;
+
     // The script containing the player's score.
+    [SerializeField]
     private Score scoreScript;
 
     private AudioManager audioManager;
@@ -60,6 +72,10 @@ public class GameOver : MonoBehaviour
     /// </summary> 
     public void OnGameOver()
     {
+        pauseBtn.SetActive(false);
+        leaderboardBtn.SetActive(true);
+        homeBtn.SetActive(true);
+        scoreCanvas.SetActive(false);
          // get current score
         float score = scoreScript.score;
         // Set player to dead
@@ -71,20 +87,20 @@ public class GameOver : MonoBehaviour
         // Show game over screen
         gameObject.SetActive(true);
 
-        // update high score
-        highScoreText.text = $"Best: {PlayerPrefs.GetFloat("HighScore"):0.##} meters ({PlayerPrefs.GetString("TopTeam")})";
+        // // update high score
+        // highScoreText.text = $"Best: {PlayerPrefs.GetFloat("HighScore"):0.##} meters ({PlayerPrefs.GetString("TopTeam")})";
 
         // update name and score of player
         nameText.text = PlayerPrefs.GetString("PlayerName");
-        scoreText.text = $"You ran an incredible {score:0.##} meters without falling";
+        scoreText.text = $"{score:0.##} meters";
 
         // update rank message
         if (score > PlayerPrefs.GetFloat("HighScore"))
-            rankText.text = "New High Score!";
+            wonTitle.SetActive(true);
         else if (score > PlayerPrefs.GetFloat("LowScore"))
-            rankText.text = "Congratulations! You made it in our top 10. Check out the leaderboard to see where you rank!";
-        else 
-            rankText.text = "You didn't make it into our top 10. Try again to see if you can make it!";
+            wonTitle.SetActive(true);
+        else
+            lostTitle.SetActive(true);
     }
 
     /// <summary>
