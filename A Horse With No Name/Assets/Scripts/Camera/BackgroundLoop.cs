@@ -9,20 +9,20 @@ public class BackgroundLoop : MonoBehaviour
     private Vector2 screenBounds;
     public float choke;
     public float scrollSpeed;
-    
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = gameObject.GetComponent<Camera>();
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
-        
+        int i = 0;
         foreach(GameObject obj in levels) 
         {
-            loadChildObjects(obj);
+            loadChildObjects(obj, i);
+            i++;
         }
     }
 
-    void loadChildObjects(GameObject obj) 
+    void loadChildObjects(GameObject obj, int level) 
     {
         float objectWidth = obj.GetComponent<SpriteRenderer>().bounds.size.x - choke;
         int childsNeeded = (int)Mathf.Ceil(screenBounds.x * 2 / objectWidth);
@@ -32,6 +32,7 @@ public class BackgroundLoop : MonoBehaviour
             c.transform.SetParent(obj.transform);
             c.transform.position = new Vector3(objectWidth * i, obj.transform.position.y, obj.transform.position.z);
             c.name = obj.name + i;
+            if (level > 0 && level < 5) c.tag = "BG"+level;
         }
         Destroy(clone);
         Destroy(obj.GetComponent<SpriteRenderer>());

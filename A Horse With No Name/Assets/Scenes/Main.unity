@@ -348,7 +348,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.04104426, y: 1.1968746}
-  m_ConnectedAnchor: {x: 1.7210444, y: -0.7931255}
+  m_ConnectedAnchor: {x: 1.7210443, y: -0.7931255}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -959,7 +959,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.07721069, y: 0.70916736}
-  m_ConnectedAnchor: {x: -0.78278935, y: -1.150833}
+  m_ConnectedAnchor: {x: -0.7827896, y: -1.150833}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1346,7 +1346,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.118257016, y: 0.581612}
-  m_ConnectedAnchor: {x: -0.33174303, y: -1.248388}
+  m_ConnectedAnchor: {x: -0.331743, y: -1.248388}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2017,7 +2017,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.08859197, y: 1.1560233}
-  m_ConnectedAnchor: {x: -2.041408, y: -0.8339768}
+  m_ConnectedAnchor: {x: -2.0414078, y: -0.8339768}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2855,7 +2855,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.053661305, y: 0.5576129}
-  m_ConnectedAnchor: {x: -0.53633815, y: -1.1533865}
+  m_ConnectedAnchor: {x: -0.53633803, y: -1.1533865}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3376,7 +3376,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.03292495, y: 0.6028706}
-  m_ConnectedAnchor: {x: -0.11707516, y: -1.327129}
+  m_ConnectedAnchor: {x: -0.11707505, y: -1.327129}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4441,7 +4441,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.07772447, y: 1.0743443}
-  m_ConnectedAnchor: {x: 2.3722756, y: -0.98565555}
+  m_ConnectedAnchor: {x: 2.3722754, y: -0.98565555}
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
@@ -4499,7 +4499,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.54570264, y: 1.6173314}
-  m_ConnectedAnchor: {x: -3.103146, y: 0.47189516}
+  m_ConnectedAnchor: {x: -3.1031463, y: 0.47189516}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5685,7 +5685,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.19222575, y: 0.29204988}
-  m_ConnectedAnchor: {x: -0.09222579, y: -0.74794996}
+  m_ConnectedAnchor: {x: -0.092225745, y: -0.74794996}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -6045,7 +6045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203247647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -2.3, z: 15}
+  m_LocalPosition: {x: -0.14, y: -2.3, z: 15}
   m_LocalScale: {x: 0.51344997, y: 0.51344997, z: 0.51344997}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8586,9 +8586,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8438353292659629623, guid: 825380d82a5834994a130318125c8f98, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438353293253090548, guid: 825380d82a5834994a130318125c8f98, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438353293527074665, guid: 825380d82a5834994a130318125c8f98, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438353293877645541, guid: 825380d82a5834994a130318125c8f98, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8438353294541064836, guid: 825380d82a5834994a130318125c8f98, type: 3}
       propertyPath: m_Name
       value: background
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438353294541064836, guid: 825380d82a5834994a130318125c8f98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8438353294541064859, guid: 825380d82a5834994a130318125c8f98, type: 3}
       propertyPath: m_RootOrder
