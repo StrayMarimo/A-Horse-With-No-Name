@@ -5,6 +5,13 @@ public class UIManager : MonoBehaviour
 {
     private AudioManager audioManager;
 
+
+    [SerializeField]
+    private GameObject dayMode;
+
+    [SerializeField]
+    private GameObject nightMode;
+
     // called when the game starts
     void Awake()
     {
@@ -37,5 +44,17 @@ public class UIManager : MonoBehaviour
 
         // load leaderboard scene
         SceneManager.LoadSceneAsync("Leaderboard", LoadSceneMode.Additive);
+    }
+
+    public void SetDayMode()
+    {
+        nightMode.SetActive(false);
+        dayMode.SetActive(true);
+    }
+
+    public void SetNightMode()
+    {
+        dayMode.SetActive(false);
+        nightMode.SetActive(true);
     }
 }

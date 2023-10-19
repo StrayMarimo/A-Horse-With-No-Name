@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float[] hingeSpeeds = {200, 100, 50};
 
+    [SerializeField]
+    private UIManager UIManagerScript;
+
     // The key codes for each leg
     private readonly KeyCode[] keyCodes = {
         KeyCode.Q, KeyCode.W, KeyCode.O, KeyCode.P};
@@ -27,6 +30,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("isDead", 0);
+
+        if (PlayerPrefs.GetInt("isDay") == 0)
+        {
+            UIManagerScript.SetNightMode();
+        }
+        else
+        {
+            UIManagerScript.SetDayMode();
+        }
         for (int i = 0; i < 12; i++) motors[i] = legs[i].motor;
         // get key objects when pressed and set invisible by default
         for (int i = 0; i < 4; i++)

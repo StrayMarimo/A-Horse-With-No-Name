@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundLoop : MonoBehaviour
 {
     public GameObject[] levels;
+    public GameObject[] levels_night;
     private Camera mainCamera;
     private Vector2 screenBounds;
     public float choke;
@@ -15,11 +16,24 @@ public class BackgroundLoop : MonoBehaviour
         mainCamera = gameObject.GetComponent<Camera>();
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         int i = 0;
-        foreach(GameObject obj in levels) 
+
+        if (PlayerPrefs.GetInt("isDay") == 1)
         {
-            loadChildObjects(obj, i);
-            i++;
+            foreach(GameObject obj in levels) 
+            {
+                loadChildObjects(obj, i);
+                i++;
+            }
         }
+        else
+        {
+            foreach(GameObject obj in levels_night) 
+            {
+                loadChildObjects(obj, i);
+                i++;
+            }
+        }
+        
     }
 
     void loadChildObjects(GameObject obj, int level) 
@@ -65,8 +79,17 @@ public class BackgroundLoop : MonoBehaviour
     }
 
     void LateUpdate(){
-        foreach(GameObject obj in levels){
-            repositionChildObjects(obj);
+        if (PlayerPrefs.GetInt("isDay") == 1)
+        {
+            foreach(GameObject obj in levels){
+                repositionChildObjects(obj);
+            }
+        }
+        else
+        {
+            foreach(GameObject obj in levels_night){
+                repositionChildObjects(obj);
+            } 
         }
     }
 }
