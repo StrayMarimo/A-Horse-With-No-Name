@@ -16,8 +16,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject toggleNightButton;
 
+    private AudioManager audioManager;
+
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         if (PlayerPrefs.GetInt("isDay") == 0)
             toggleDayButton.SetActive(true);
         else
@@ -28,32 +31,35 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        audioManager.PlayClickSFX();
+        audioManager.PauseBGM();
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1;
-        AudioListener.pause = false;
+        audioManager.PlayClickSFX();
     }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
-        AudioListener.pause = false;
+        audioManager.PlayClickSFX();
+        audioManager.ResumeBGM();
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
-        AudioListener.pause = false;
+        audioManager.PlayClickSFX();
     }
 
     public void ToggleMode()
     {
+        audioManager.PlayClickSFX();
         if (PlayerPrefs.GetInt("isDay") == 0)
         {
             toggleNightButton.SetActive(false);
@@ -68,6 +74,5 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("isDay", 0);
             UIManagerScript.SetNightMode();
         }
-        
     }
 }

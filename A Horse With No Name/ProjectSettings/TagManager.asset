@@ -18,6 +18,8 @@ TagManager:
   - BG2
   - BG3
   - BG4
+  - Hover
+  - ThemeMusic
   layers:
   - Default
   - TransparentFX

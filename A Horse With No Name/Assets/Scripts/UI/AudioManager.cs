@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
         // find the click sound effect
         clickSFX = GameObject.FindGameObjectWithTag("Click")
             .GetComponent<AudioSource>();
+        GameObject.FindGameObjectWithTag("ThemeMusic").GetComponent<AudioSource>().Stop();
     }
 
     /// <summary>

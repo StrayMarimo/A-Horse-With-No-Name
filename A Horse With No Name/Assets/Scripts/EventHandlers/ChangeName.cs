@@ -37,4 +37,12 @@ public class ChangeName : MonoBehaviour
             placeholder.text = "Please enter a name";
         }
     }
+
+    public void GoToMenu()
+    {
+        // Play click sound effect
+        GameObject.FindGameObjectWithTag("Click")
+            .GetComponent<AudioSource>().Play();
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
 }

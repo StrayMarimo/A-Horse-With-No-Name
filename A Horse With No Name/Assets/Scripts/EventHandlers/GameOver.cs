@@ -96,11 +96,20 @@ public class GameOver : MonoBehaviour
 
         // update rank message
         if (score > PlayerPrefs.GetFloat("HighScore"))
+        {
+            lostTitle.SetActive(false);
             wonTitle.SetActive(true);
+        }
         else if (score > PlayerPrefs.GetFloat("LowScore"))
+        {
+            lostTitle.SetActive(false);
             wonTitle.SetActive(true);
+        }
         else
+        {
+            wonTitle.SetActive(false);
             lostTitle.SetActive(true);
+        }
     }
 
     /// <summary>

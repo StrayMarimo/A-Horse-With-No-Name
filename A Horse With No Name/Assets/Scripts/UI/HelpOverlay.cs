@@ -5,18 +5,29 @@ using UnityEngine;
 public class HelpOverlay : MonoBehaviour
 {
     [SerializeField] GameObject helpOverlay;
+    private AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void Help()
     {
         helpOverlay.SetActive(true);
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        audioManager.PlayClickSFX();
+        audioManager.PauseBGM();
     }
 
-    public void Resume()
+    public void Resume(bool fromGame)
     {
         helpOverlay.SetActive(false);
-        Time.timeScale = 1;
-        AudioListener.pause = false;
+        if (fromGame)
+        {
+            Time.timeScale = 1;
+            audioManager.PlayClickSFX();
+            audioManager.ResumeBGM();
+        }
     }
 }
