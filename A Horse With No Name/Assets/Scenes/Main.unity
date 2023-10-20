@@ -4690,7 +4690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 246007539}
-  playerPos: {fileID: 1297324892}
+  playerPos: {fileID: 1438344317}
   score: 0
 --- !u!114 &875115962
 MonoBehaviour:
@@ -4706,6 +4706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayMode: {fileID: 8225540}
   nightMode: {fileID: 25669907}
+  scoreText: {fileID: 246007539}
 --- !u!1 &883189958
 GameObject:
   m_ObjectHideFlags: 0

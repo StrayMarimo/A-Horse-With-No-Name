@@ -1,6 +1,7 @@
 // This script is used to manage the UI buttons in the game
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class UIManager : MonoBehaviour
 {
     private AudioManager audioManager;
@@ -11,6 +12,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject nightMode;
+
+    [SerializeField]
+    private TMP_Text scoreText;
 
     // called when the game starts
     void Awake()
@@ -50,11 +54,13 @@ public class UIManager : MonoBehaviour
     {
         nightMode.SetActive(false);
         dayMode.SetActive(true);
+        scoreText.color = Color.black;
     }
 
     public void SetNightMode()
     {
         dayMode.SetActive(false);
         nightMode.SetActive(true);
+        scoreText.color = Color.white;
     }
 }
