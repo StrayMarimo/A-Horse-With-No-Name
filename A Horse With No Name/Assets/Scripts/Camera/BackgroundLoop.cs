@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BackgroundLoop : MonoBehaviour
@@ -13,6 +14,12 @@ public class BackgroundLoop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        recalibrateBG();
+    }
+
+    public async void recalibrateBG()
+    {
+        await Task.Delay(100);
         mainCamera = gameObject.GetComponent<Camera>();
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         int i = 0;
@@ -33,7 +40,6 @@ public class BackgroundLoop : MonoBehaviour
                 i++;
             }
         }
-        
     }
 
     void loadChildObjects(GameObject obj, int level) 

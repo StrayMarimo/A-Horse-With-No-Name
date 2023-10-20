@@ -16,6 +16,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject toggleNightButton;
 
+    [SerializeField]
+    private BackgroundLoop backgroundLoop;
+
     private AudioManager audioManager;
 
     void Awake()
@@ -74,5 +77,7 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("isDay", 0);
             UIManagerScript.SetNightMode();
         }
+
+        backgroundLoop.recalibrateBG();
     }
 }
