@@ -9,7 +9,8 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("musicVolume"))
+        
+        if(PlayerPrefs.HasKey("audioVolume"))
         {
             LoadVolume();
         }
@@ -28,7 +29,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("audioVolume");
 
         SetAudioVolume();
     }
