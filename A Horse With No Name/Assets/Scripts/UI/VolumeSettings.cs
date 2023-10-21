@@ -25,7 +25,6 @@ public class VolumeSettings : MonoBehaviour
         float volume = musicSlider.value;
         myMixer.SetFloat("Master", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("audioVolume", volume);
-        print("hangaw");
     }
 
     private void LoadVolume()

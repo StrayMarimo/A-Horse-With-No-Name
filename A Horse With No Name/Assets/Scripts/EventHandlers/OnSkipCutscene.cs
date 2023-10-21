@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class intro : MonoBehaviour
+public class OnSkipCutscene : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Change KeyCode to the desired key
+        if (Input.anyKey) // Change KeyCode to the desired key
         {
             SceneManager.LoadScene("Main Menu");
         }
