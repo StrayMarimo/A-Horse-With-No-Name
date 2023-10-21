@@ -1,4 +1,5 @@
 // This script is used to control the main menu and its buttons
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,9 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     private GameObject bgm;
+
+    public float idleTime = 0f;
+    public Boolean isIdle = false;
 
     void Start()
     {
@@ -34,6 +38,39 @@ public class MainMenu : MonoBehaviour
             NightBG.SetActive(true);
         }
         DontDestroyOnLoad(GameObject.FindGameObjectWithTag("ThemeMusic"));
+    }
+
+    private void Update() {
+        // Check if any input is detected
+        if (Input.anyKey || Input.GetAxis("Mouse X") != 0f || Input.GetAxis("Mouse Y") != 0f)
+        {
+            // Reset idle time and set isIdle to false
+            ResetIdleState();
+            //Debug.Log("Reset Idle");
+        }
+        else
+        {
+            // Increment idle time
+            idleTime += Time.deltaTime;
+
+            // Check if idle time exceeds 15 seconds and player is not already idle
+            if (idleTime >= 10f && !isIdle)
+            {
+                // Set isIdle to true to prevent multiple prints
+                isIdle = true;
+            }
+        }
+
+        if(isIdle){
+            SceneManager.LoadScene("CutScene");
+            bgm.GetComponent<AudioSource>().Stop();
+        }
+    }
+
+    private void ResetIdleState()
+    {
+        idleTime = 0f;
+        isIdle = false;
     }
 
     // Called when the player clicks the play button.

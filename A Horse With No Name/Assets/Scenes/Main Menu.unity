@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.7
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2385,6 +2385,7 @@ MonoBehaviour:
   NightBG: {fileID: 1943063456826469819}
   helpOverlay: {fileID: 267127154}
   bgm: {fileID: 883611286}
+  timeStart: 5
 --- !u!114 &1441933625
 MonoBehaviour:
   m_ObjectHideFlags: 0

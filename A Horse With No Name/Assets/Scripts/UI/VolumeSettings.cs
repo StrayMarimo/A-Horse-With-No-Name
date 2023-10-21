@@ -9,6 +9,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
+        
         if(PlayerPrefs.HasKey("audioVolume"))
         {
             LoadVolume();
@@ -24,11 +25,12 @@ public class VolumeSettings : MonoBehaviour
         float volume = musicSlider.value;
         myMixer.SetFloat("Master", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("audioVolume", volume);
+        print("hangaw");
     }
 
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("audioVolume");
 
         SetAudioVolume();
     }
