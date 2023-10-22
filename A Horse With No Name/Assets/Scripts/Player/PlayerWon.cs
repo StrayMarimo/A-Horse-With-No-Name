@@ -17,6 +17,7 @@ public class PlayerWon : MonoBehaviour
             GameObject.FindGameObjectWithTag("Audio")
                 .GetComponent<AudioManager>().PlayPlayerWonSFX();
             PlayerPrefs.SetInt("isDead", 1);
+            PlayerPrefs.SetInt("didWin", 1);
             
             // enable game over screen
             gameOverScript.OnGameOver(true);
