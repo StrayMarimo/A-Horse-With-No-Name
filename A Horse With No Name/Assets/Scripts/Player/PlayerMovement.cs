@@ -92,13 +92,13 @@ public class PlayerMovement : MonoBehaviour
             if(i % 2 == 0)
             {
                 legs[i].useMotor = true;
-                motors[i].motorSpeed = hingeSpeedsFront[i - index];
+                motors[i].motorSpeed = -hingeSpeedsFront[i - index];
                 legs[i].motor = motors[i];
             }
             else
             {
                 legs[i].useMotor = true;
-                motors[i].motorSpeed = hingeSpeedsBack[i - index];
+                motors[i].motorSpeed = -hingeSpeedsBack[i - index];
                 legs[i].motor = motors[i];
             }
         }
