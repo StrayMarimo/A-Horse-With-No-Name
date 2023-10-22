@@ -16,10 +16,21 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text scoreText;
 
+    [SerializeField]
+    private PauseMenu pauseMenuScript;
+
     // called when the game starts
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenuScript.Pause();
+        }
     }
 
     /// <summary>

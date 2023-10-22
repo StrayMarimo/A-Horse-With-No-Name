@@ -21,6 +21,6 @@ public class Score : MonoBehaviour
 
         // Update the score rounded to 2 decimal places.
         score = Mathf.Round(playerPos.position.x * 100.0f) * 0.01f; 
-        scoreText.text = string.Format("{0:0.##}", score);
+        scoreText.text = string.Format("{0:0.##} meters", score);
     }
 }

@@ -44,7 +44,6 @@ public class CameraMovement : MonoBehaviour
                     transform.position.z);
                 if (Mathf.Abs(transform.position.x - cameraPrevPosX) >= 0.1f)
                 {
-                    print("Camera moved");
                     for (int i = 0; i < bg1Pos.Length; i++)
                     {
                         bg1Pos[i].transform.position = new Vector3(bg1Pos[i].transform.position.x - bgSpeeds[0], bg1Pos[i].transform.position.y, bg1Pos[i].transform.position.z);

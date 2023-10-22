@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("isDead", 0);
-
+        PlayerPrefs.SetInt("isKeybindDisabled", 0);
         if (PlayerPrefs.GetInt("isDay") == 0)
         {
             UIManagerScript.SetNightMode();
