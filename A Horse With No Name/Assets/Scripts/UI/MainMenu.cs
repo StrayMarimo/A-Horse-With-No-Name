@@ -108,10 +108,19 @@ public class MainMenu : MonoBehaviour
         helpOverlay.SetActive(false);
     }
 
+    public void ShowCreditsScene()
+    {
+        bgm.GetComponent<AudioSource>().Stop();
+        PlayClickSFX();
+        SceneManager.LoadSceneAsync("Credits");
+    }
+
     // plays the click sound effect when a button is clicked
     private void PlayClickSFX() {
         GameObject click = GameObject.FindGameObjectWithTag("Click");
         DontDestroyOnLoad(click.transform.gameObject);
         click.GetComponent<AudioSource>().Play();
     }
+
+   
 }
