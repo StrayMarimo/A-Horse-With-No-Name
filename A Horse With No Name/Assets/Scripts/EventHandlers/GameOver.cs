@@ -151,8 +151,8 @@ public class GameOver : MonoBehaviour
             else
             {
                 wonTitle.SetActive(false);
-                lostTitle.SetActive(false);
-                highScoreTitle.SetActive(true);
+                highScoreTitle.SetActive(false);
+                lostTitle.SetActive(true);
             }
         }
     }
