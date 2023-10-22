@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
     private Transform finishLine;
 
     [SerializeField]
-    private float[] bgSpeeds = {0.01f, 0.008f, 0.005f, 0.002f};
+    private float[] bgSpeeds = {0.008f, 0.005f, 0.001f, 0.0009f};
     void Start()
     {
          // Find the player character by tag and get its position.
@@ -36,7 +36,7 @@ public class CameraMovement : MonoBehaviour
         bg4Pos = GameObject.FindGameObjectsWithTag("BG4");
         // If the player is between the start and finish lines,
         // move the camera to the player's position.
-        if (playerPos.position.x > 0 && playerPos.position.x < finishLine.position.x && PlayerPrefs.GetInt("isDead") == 0)
+        if (PlayerPrefs.GetInt("didStart") == 1 && playerPos.position.x < finishLine.position.x && PlayerPrefs.GetInt("isDead") == 0)
             {
                 transform.position = new Vector3 (
                     playerPos.position.x, 

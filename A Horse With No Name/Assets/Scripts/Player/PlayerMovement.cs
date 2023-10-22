@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     /// <param name="index">index of first leg part.</param>
     private void SetMotorSpeedPair(int index){
+        PlayerPrefs.SetInt("didStart", 1);
         for (int i = index; i < index + 3; i++)
         {
             legs[i].useMotor = true;
