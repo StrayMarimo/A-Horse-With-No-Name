@@ -30,6 +30,11 @@ public class PauseMenu : MonoBehaviour
             toggleNightButton.SetActive(true);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Resume();
+    }
+
     public void Pause()
     {
         pauseMenu.SetActive(true);

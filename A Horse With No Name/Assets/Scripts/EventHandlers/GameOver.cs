@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour
 {
     // The text objects for the game over screen.
     [SerializeField]
-    private TMP_Text scoreText;
+    private GameObject scoreText;
 
     [SerializeField]
     private GameObject wonTitle;
@@ -17,6 +17,8 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private GameObject lostTitle;
 
+    [SerializeField]
+    private GameObject highScoreTitle;
     [SerializeField]
     private TMP_Text nameText;
 
@@ -30,7 +32,29 @@ public class GameOver : MonoBehaviour
     private GameObject pauseBtn;
 
     [SerializeField]
+    private GameObject quitBtn;
+
+    [SerializeField]
+    private GameObject againBtn;
+
+    [SerializeField]
+    private GameObject subtitle;
+
+
+    [SerializeField]
+    private GameObject continueBtn;
+
+    [SerializeField]
+    private GameObject saveNameBtn;
+
+    [SerializeField]
     private GameObject scoreCanvas;
+
+    [SerializeField]
+    private GameObject nameHorseTxt;
+
+    [SerializeField]
+    private GameObject inputHorseName;
 
     // The script containing the player's score.
     [SerializeField]
@@ -70,7 +94,7 @@ public class GameOver : MonoBehaviour
     /// <summary>
     /// Called when the player dies.
     /// </summary> 
-    public void OnGameOver()
+    public void OnGameOver(bool didWin)
     {
         pauseBtn.SetActive(false);
         leaderboardBtn.SetActive(true);
@@ -92,23 +116,44 @@ public class GameOver : MonoBehaviour
 
         // update name and score of player
         nameText.text = PlayerPrefs.GetString("PlayerName");
-        scoreText.text = $"{score:0.##} meters";
+    
+        if (didWin)
+        {
+            lostTitle.SetActive(false);
+            highScoreTitle.SetActive(false);
+            wonTitle.SetActive(true);
+            scoreText.GetComponent<TMP_Text>().text = "You've triumphantly reached the 100-meter mark!";
+            continueBtn.SetActive(true);
+            againBtn.SetActive(false);
+            quitBtn.SetActive(false);
+        }
+        else 
+        {
+            continueBtn.SetActive(false);
+            subtitle.SetActive(false);
+            againBtn.SetActive(true);
+            quitBtn.SetActive(true);
+            scoreText.GetComponent<TMP_Text>().text = $"{score:0.##} meters";
 
-        // update rank message
-        if (score > PlayerPrefs.GetFloat("HighScore"))
-        {
-            lostTitle.SetActive(false);
-            wonTitle.SetActive(true);
-        }
-        else if (score > PlayerPrefs.GetFloat("LowScore"))
-        {
-            lostTitle.SetActive(false);
-            wonTitle.SetActive(true);
-        }
-        else
-        {
-            wonTitle.SetActive(false);
-            lostTitle.SetActive(true);
+              // update rank message
+            if (score > PlayerPrefs.GetFloat("HighScore"))
+            {
+                lostTitle.SetActive(false);
+                wonTitle.SetActive(false);
+                highScoreTitle.SetActive(true);
+            }
+            else if (score > PlayerPrefs.GetFloat("LowScore"))
+            {
+                lostTitle.SetActive(false);
+                wonTitle.SetActive(false);
+                highScoreTitle.SetActive(true);
+            }
+            else
+            {
+                wonTitle.SetActive(false);
+                lostTitle.SetActive(false);
+                highScoreTitle.SetActive(true);
+            }
         }
     }
 
@@ -134,6 +179,29 @@ public class GameOver : MonoBehaviour
         // save new score to XML file
         XMLManager.instance.SaveScores(scores);
     }
+
+    public void OnContinue()
+    {
+        audioManager.PlayClickSFX();
+        continueBtn.SetActive(false);
+        wonTitle.SetActive(false);
+        scoreText.SetActive(false);
+        nameHorseTxt.SetActive(true);
+        saveNameBtn.SetActive(true);
+        inputHorseName.SetActive(true);
+        PlayerPrefs.SetInt("isKeybindDisabled", 1);
+    }
+
+    public void OnSaveHorseName()
+    {
+        if (inputHorseName.GetComponent<TMP_InputField>().text == "")
+            return;
+        PlayerPrefs.SetInt("isKeybindDisabled", 0); 
+        PlayerPrefs.SetString("HorseName", inputHorseName.GetComponent<TMP_InputField>().text);
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
+
+
 
 }
 

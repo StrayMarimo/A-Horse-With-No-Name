@@ -15,7 +15,7 @@ public class KillPlayer : MonoBehaviour
     void Update()
     {
         // If the player presses R and player is dead, reset game.
-        if (Input.GetKey(KeyCode.R) && PlayerPrefs.GetInt("isDead") == 1)
+        if (Input.GetKey(KeyCode.Space) && PlayerPrefs.GetInt("isKeybindDisabled") == 0)
                 SceneManager.LoadSceneAsync("Main");
     }
 
@@ -32,7 +32,7 @@ public class KillPlayer : MonoBehaviour
             GameObject.FindGameObjectWithTag("Audio")
                 .GetComponent<AudioManager>().PlayPlayerDiedSFX();
             // enable game over screen
-            gameOverScript.OnGameOver();
+            gameOverScript.OnGameOver(false);
         }
     }
 }

@@ -16,8 +16,10 @@ public class PlayerWon : MonoBehaviour
             // Play player won sound effect
             GameObject.FindGameObjectWithTag("Audio")
                 .GetComponent<AudioManager>().PlayPlayerWonSFX();
+            PlayerPrefs.SetInt("isDead", 1);
+            
             // enable game over screen
-            gameOverScript.OnGameOver();
+            gameOverScript.OnGameOver(true);
         }
     }
 }
