@@ -45,16 +45,7 @@ public class MainMenu : MonoBehaviour
         }
             
         
-        if (PlayerPrefs.GetInt("isDay") == 1)
-        {
-            NightBG.SetActive(false);
-            DayBG.SetActive(true);
-        }
-        else
-        {
-            DayBG.SetActive(false);
-            NightBG.SetActive(true);
-        }
+        setBG();
         DontDestroyOnLoad(GameObject.FindGameObjectWithTag("ThemeMusic"));
     }
 
@@ -133,6 +124,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("Credits");
     }
 
+
     // plays the click sound effect when a button is clicked
     private void PlayClickSFX() {
         GameObject click = GameObject.FindGameObjectWithTag("Click");
@@ -140,5 +132,16 @@ public class MainMenu : MonoBehaviour
         click.GetComponent<AudioSource>().Play();
     }
 
-   
+    public void setBG() {
+        if (PlayerPrefs.GetInt("isDay") == 1)
+        {
+            NightBG.SetActive(false);
+            DayBG.SetActive(true);
+        }
+        else
+        {
+            DayBG.SetActive(false);
+            NightBG.SetActive(true);
+        }
+    }
 }

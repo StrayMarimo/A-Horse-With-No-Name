@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        PlayerPrefs.SetInt("didWin", 0);
+        PlayerPrefs.SetInt("didWin", 0); 
     }
 
     void Update()
