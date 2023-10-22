@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
         bg2Pos = GameObject.FindGameObjectsWithTag("BG2");
         bg3Pos = GameObject.FindGameObjectsWithTag("BG3");
         bg4Pos = GameObject.FindGameObjectsWithTag("BG4");
-        print(playerRb.velocity.x);
+        
         // If the player is between the start and finish lines,
         // move the camera to the player's position.
         if (playerPos.position.x < finishLine.position.x && PlayerPrefs.GetInt("isDead") == 0)
