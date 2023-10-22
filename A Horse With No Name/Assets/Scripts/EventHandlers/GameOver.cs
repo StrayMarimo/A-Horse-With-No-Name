@@ -96,7 +96,6 @@ public class GameOver : MonoBehaviour
     /// </summary> 
     public void OnGameOver(bool didWin)
     {
-        PlayerPrefs.SetInt("didStart", 0);
         pauseBtn.SetActive(false);
         leaderboardBtn.SetActive(true);
         homeBtn.SetActive(true);

@@ -2,6 +2,7 @@ using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class PauseMenu : MonoBehaviour
         audioManager.PlayClickSFX();
     }
 
-    public void ToggleMode()
+    public async void ToggleMode()
     {
         audioManager.PlayClickSFX();
         if (PlayerPrefs.GetInt("isDay") == 0)
@@ -82,7 +83,7 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("isDay", 0);
             UIManagerScript.SetNightMode();
         }
-
+        await Task.Delay(100);
         backgroundLoop.recalibrateBG();
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class BackgroundLoop : MonoBehaviour
@@ -17,9 +16,8 @@ public class BackgroundLoop : MonoBehaviour
         recalibrateBG();
     }
 
-    public async void recalibrateBG()
+    public void recalibrateBG()
     {
-        await Task.Delay(100);
         mainCamera = gameObject.GetComponent<Camera>();
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         int i = 0;
@@ -50,7 +48,7 @@ public class BackgroundLoop : MonoBehaviour
         for(int i = 0; i <= childsNeeded; i++){
             GameObject c = Instantiate(clone) as GameObject;
             c.transform.SetParent(obj.transform);
-            c.transform.position = new Vector3(objectWidth * i, obj.transform.position.y, obj.transform.position.z);
+            c.transform.position = new Vector3(objectWidth * i - 1.0f, obj.transform.position.y, obj.transform.position.z);
             c.name = obj.name + i;
             if (level > 0 && level < 5) c.tag = "BG"+level;
         }
