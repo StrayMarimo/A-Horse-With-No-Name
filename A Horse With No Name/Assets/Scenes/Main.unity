@@ -2649,8 +2649,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f0cf045c389b2413880f5ca4c3dd13cf, type: 2}
-  m_sharedMaterial: {fileID: 8710729921816356240, guid: f0cf045c389b2413880f5ca4c3dd13cf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 505cf397ec9374771971882cf12d551d, type: 2}
+  m_sharedMaterial: {fileID: 4696638061118286721, guid: 505cf397ec9374771971882cf12d551d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4127,7 +4127,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.031048208}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4138,7 +4138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.0245895}
   m_EdgeRadius: 0
 --- !u!4 &749516159
 Transform:
@@ -5808,8 +5808,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f0cf045c389b2413880f5ca4c3dd13cf, type: 2}
-  m_sharedMaterial: {fileID: 8710729921816356240, guid: f0cf045c389b2413880f5ca4c3dd13cf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 505cf397ec9374771971882cf12d551d, type: 2}
+  m_sharedMaterial: {fileID: 4696638061118286721, guid: 505cf397ec9374771971882cf12d551d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5840,8 +5840,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6450,7 +6450,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: f0cf045c389b2413880f5ca4c3dd13cf, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: 505cf397ec9374771971882cf12d551d, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1

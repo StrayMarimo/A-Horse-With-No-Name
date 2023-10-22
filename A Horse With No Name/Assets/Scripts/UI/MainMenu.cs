@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject bgm;
 
+    [SerializeField]
+    private GameObject horseName;
+
+    [SerializeField]
+    private GameObject easterEgg;
+
     public float idleTime = 0f;
     public Boolean isIdle = false;
 
@@ -26,6 +33,17 @@ public class MainMenu : MonoBehaviour
             bgm.GetComponent<AudioSource>().Play();
         if (!PlayerPrefs.HasKey("isDay"))
             PlayerPrefs.SetInt("isDay", 1);
+
+        if (PlayerPrefs.GetInt("didWin") == 1)
+        {
+            horseName.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("HorseName");
+            easterEgg.SetActive(true);
+        }
+        else
+        {
+            easterEgg.SetActive(false);
+        }
+            
         
         if (PlayerPrefs.GetInt("isDay") == 1)
         {
