@@ -11,7 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
     // The speeds for each leg part.
     [SerializeField]
-    private float[] hingeSpeeds = {200, 100, 50};
+    private float[] hingeSpeedsBack = {300, 150, 75};
+
+    [SerializeField]
+    private float[] hingeSpeedsFront = {300, 150, 75};
 
     [SerializeField]
     private UIManager UIManagerScript;
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private readonly JointMotor2D[] motors = new JointMotor2D[12];
      // The UI elements for each leg.
     private readonly GameObject[] keys = new GameObject[4];
+    
 
     /// <summary>
     /// Initializes the motors and keys arrays.
@@ -85,9 +89,18 @@ public class PlayerMovement : MonoBehaviour
     private void SetMotorSpeedPair(int index){
         for (int i = index; i < index + 3; i++)
         {
-            legs[i].useMotor = true;
-            motors[i].motorSpeed = -hingeSpeeds[i - index];
-            legs[i].motor = motors[i];
+            if(i % 2 == 0)
+            {
+                legs[i].useMotor = true;
+                motors[i].motorSpeed = hingeSpeedsFront[i - index];
+                legs[i].motor = motors[i];
+            }
+            else
+            {
+                legs[i].useMotor = true;
+                motors[i].motorSpeed = hingeSpeedsBack[i - index];
+                legs[i].motor = motors[i];
+            }
         }
     }
 
