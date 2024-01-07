@@ -7026,11 +7026,11 @@ MonoBehaviour:
   hingeSpeedsBack:
   - 300
   - 150
-  - 75
+  - -75
   hingeSpeedsFront:
   - 300
   - 175
-  - 75
+  - -75
   UIManagerScript: {fileID: 875115962}
 --- !u!1 &1237654740
 GameObject:

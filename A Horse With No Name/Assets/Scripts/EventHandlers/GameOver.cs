@@ -96,6 +96,8 @@ public class GameOver : MonoBehaviour
     /// </summary> 
     public void OnGameOver(bool didWin)
     {
+
+      
         pauseBtn.SetActive(false);
         leaderboardBtn.SetActive(true);
         homeBtn.SetActive(true);
@@ -104,7 +106,10 @@ public class GameOver : MonoBehaviour
         float score = scoreScript.score;
         // Set player to dead
         PlayerPrefs.SetInt("isDead", 1); 
-        
+          if (didWin)
+        {
+            score = 100;
+        }
         // Save score
         AddScore(PlayerPrefs.GetString("PlayerName"), score);
             
